@@ -1,3 +1,3 @@
 <header>
-    <h1>TITOLO DI PAGINA</h1>
+    <h1>LARAVEL DC COMICS</h1>
 </header>
