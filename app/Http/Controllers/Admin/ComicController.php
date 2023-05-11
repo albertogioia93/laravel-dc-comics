@@ -15,7 +15,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comic = Comic::all();
+        $comics = Comic::all();
 
         return view('comic.index', compact('comics'));
     }
@@ -27,7 +27,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return view('comic.create');
     }
 
     /**
@@ -38,7 +38,17 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //salvo dati in arrivo dal form
+        $data = $request->all();
+        //creo un modello Pasta
+        $newComic = new Comic();
+
+        //salvataggio in tabella
+        $newComic->fill($data);
+        $newComic->save();
+
+        
+        return to_route('comics.show', $newComic->id);
     }
 
     /**
@@ -47,9 +57,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comic $comic)
     {
-        //
+        return view('comic.show', compact('comic'));
     }
 
     /**
@@ -58,9 +68,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('comic.edit', compact('comic'));
     }
 
     /**
@@ -70,9 +80,13 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+        $comic->update($data);
+
+        
+        return to_route('comics.index');
     }
 
     /**
@@ -81,8 +95,11 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return to_route('comics.index');
     }
 }
+
+
