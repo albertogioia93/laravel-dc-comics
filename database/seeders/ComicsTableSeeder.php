@@ -15,7 +15,8 @@ class ComicsTableSeeder extends Seeder
      */
     public function run()
     {
-        $comics = config("comic");
+        $comics = config("comics");
+        
 
         if (!is_null($comics)) {
             foreach($comics as $comic) {
@@ -28,11 +29,15 @@ class ComicsTableSeeder extends Seeder
                 $newComic->series = $comic['series'];
                 $newComic->sale_date = $comic['sale_date'];
                 $newComic->type = $comic['type'];
-                $newComic->artists = $comic['artists'];
-                $newComic->writers = $comic['writers'];
+                $newComic->artists = implode(" , ", $comic['artists']);
+                $newComic->writers = implode(" , ", $comic['writers']);
+                $newComic->save();
             }
 
         }
 
     }
 }
+
+// $arr = array('Hello','World!','Beautiful','Day!');
+// echo implode("",$arr);
