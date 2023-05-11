@@ -45,7 +45,7 @@
                  <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-primary btn-sm">Modifica</a>
                  <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
                     @csrf
-                    {{-- aggiungiamo il metodo --}}
+                    
                     @method('DELETE')
                     <input type="submit" value="Cancella" class="btn btn-danger btn-sm">
                 </form>
