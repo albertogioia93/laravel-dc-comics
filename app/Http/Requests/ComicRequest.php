@@ -28,6 +28,14 @@ class ComicRequest extends FormRequest
             // MODIFICARE QUESTI DATI
             'thumb' => 'nullable|url|max:255|ends_with:png,jpg,webp',
             'title' => 'required|max:100',
+            'description' => 'required',
+            'price' => 'required',
+            'series' => 'required|max:50',
+            'sale_date' => 'required',
+            'type' => 'required|max:50',
+            'artists' => 'required',
+            'writers' => 'required',
+            
             
          ];
     }
@@ -39,6 +47,13 @@ class ComicRequest extends FormRequest
 
         return [
             'title' =>  $obbligatorio,
+            'description' =>  $obbligatorio,
+            'price' =>  $obbligatorio,
+            'series' =>  $obbligatorio,
+            'sale_date' =>  $obbligatorio,
+            'type' =>  $obbligatorio,
+            'artists' =>  $obbligatorio,
+            'writers' =>  $obbligatorio,
             
         ];
     }
