@@ -38,8 +38,8 @@ class ComicRequest extends FormRequest
         $obbligatorio =  ':attribute è obbligatorio.';
 
         return [
-            'titolo' =>  $obbligatorio,
-            'cottura.required' => $obbligatorio
+            'title' =>  $obbligatorio,
+            
         ];
     }
 }
